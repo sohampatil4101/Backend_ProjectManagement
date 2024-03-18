@@ -1,11 +1,35 @@
 const connectToMongo = require('./db');
 const express = require('express')
+
 connectToMongo();
 
 
 const app = express()
 var cors = require('cors')
 const port = 5000
+
+
+// file logic
+
+const path = require('path')
+const multer  = require('multer')
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+      cb(null, 'uploads/')
+  },
+  filename: function(req, file, cb) {
+      let ext = path.extname(file.originalname)
+      cb(null, Date.now() + ext)
+  }
+})
+
+const upload = multer({ storage: storage })
+// app.use(express.static('public'))
+app.use('/uploads', express.static('uploads'));
+
+
+// app.use('/uploads', express.static())
 
 
 
@@ -28,8 +52,7 @@ app.use('/api/note', require('./routes/note'))
 app.use('/api/sentiments', require('./routes/sentiments'))
 app.use('/api/assesment', require('./routes/assesment'))
 
-
-
 app.listen(port, () => {
   console.log(`Backend app listening on port ${port}`)
 })
+

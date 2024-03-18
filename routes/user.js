@@ -2,13 +2,14 @@ const express = require('express')
 const User = require('../models/User')
 const Updateuser = require('../models/user_medi_info/UserInfo')
 const Updateuserdeases = require('../models/user_medi_info/OldMedi_info')
+const userprofile = require('../models/Userprofile')
 const router = require('express').Router();
 const {body, validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
 const JWT_SECRET = 'masknxanxlanla';
-
+// const {upload} = require('../index');
 const validate = [
     body('name', 'Enter a valid name').isLength({min:3}),
     body('email', 'Enter a valid Email').isEmail(),
@@ -53,10 +54,7 @@ router.post('/', validate, async (req, res) =>{
     catch (error) {
         console.log(error.message)
         res.status(500).send("Some error occured")
-    }
-    
-    
-})
+    }})
 
 
 // Authentication a user and his password
@@ -102,7 +100,51 @@ router.post('/login', [
     )
 
 
+    // file upload logic 
+    
+    const path = require('path')
+    const multer  = require('multer')
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, 'uploads/')
+        },
+        filename: function(req, file, cb) {
+            let ext = path.extname(file.originalname)
+            cb(null, Date.now() + ext)
+        }
+    })
+    
+    const upload = multer({ storage: storage })
+    // app.use('/uploads', express.static())
 
+
+
+    // route for updateing user profile
+    router.post('/updateuserprofile', upload.single('resume'), fetchuser, async (req, res) =>{
+
+        console.log("soham is great",req.body, req.file)
+        try {
+            console.log(req.user.id)
+            const user = await userprofile.create({
+                user: req.user.id,
+                fullname : req.body.fullname,
+                dob : req.body.dob,
+                mobilno : req.body.mobilno,
+                skills : req.body.skills,
+                typeofuser : req.body.typeofuser,
+                bio : req.body.bio,
+                resume : req.file.path
+            })
+            success = true
+            res.json({success}) 
+    }    
+    
+    catch (error) {
+        console.log(error.message)
+        res.status(500).send("Some error occured")
+    }
+    })
+    
 
     // Route to update user profile
     router.post('/updateuser', fetchuser, async (req, res) =>{

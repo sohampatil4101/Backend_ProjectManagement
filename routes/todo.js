@@ -20,19 +20,14 @@ router.post('/posttodo', fetchuser, async (req, res) =>{
             todo : req.body.todo,
             priority : req.body.priority
         })
-        
         success = true
-        res.json({success})
-    
-    
+        res.json({success}) 
 }    
 
 catch (error) {
     console.log(error.message)
     res.status(500).send("Some error occured")
 }
-
-
 })
 
 
