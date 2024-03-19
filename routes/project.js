@@ -43,7 +43,7 @@ const JWT_SECRET = 'masknxanxlanla';
                 teamdata[keyValue[0]] = keyValue[1];
             });
 
-            console.log(teamdata);
+            // console.log(teamdata);
 
             const milestonepairs = req.body.milestone.split(", ");
             const milestonedata = {};
@@ -52,7 +52,7 @@ const JWT_SECRET = 'masknxanxlanla';
                 milestonedata[keyValue[0]] = keyValue[1];
             });
 
-            console.log(milestonedata);
+            // console.log(milestonedata);
 
             const user = await project.create({
                 user: req.user.id,
@@ -84,5 +84,16 @@ const JWT_SECRET = 'masknxanxlanla';
     }
     })
     
-
+    // get project data
+    router.get('/getmyproject', fetchuser, async(req, res) =>{
+        try {
+            const notes = await project.find({user: req.user.id});
+            res.json(notes)
+        } catch (error) {
+        console.log(error.message)
+        res.status(500).send("Some error occured")
+        }
+    })
+    
+    
 module.exports = router
