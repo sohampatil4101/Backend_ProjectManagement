@@ -68,7 +68,7 @@ const JWT_SECRET = 'masknxanxlanla';
                 projectfundedby : req.body.projectfundedby,
                 projectstack : req.body.projectstack,
                 totalmilestones : req.body.totalmilestones,
-                milestone : milestone,
+                milestone : milestonedata,
                 deadlineofproject : req.body.deadlineofproject,
                 flowchart : req.body.flowchart,
                 architecture : req.body.architecture,
