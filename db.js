@@ -4,7 +4,7 @@ const connectToMongo = ()=>{ mongoose.connect("mongodb+srv://patilsoham390:0xIbJ
     useNewUrlParser: true, 
     useUnifiedTopology: true
 })
-.then(()=>{
+.then(()=>{ 
     console.log("Database connected successfully!!!");          
 })
 .catch((e)=>{
