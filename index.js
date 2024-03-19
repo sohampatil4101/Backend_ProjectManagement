@@ -29,7 +29,6 @@ const upload = multer({ storage: storage })
 app.use('/uploads', express.static('uploads'));
 
 
-// app.use('/uploads', express.static())
 
 
 

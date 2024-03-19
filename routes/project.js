@@ -36,14 +36,23 @@ const JWT_SECRET = 'masknxanxlanla';
 
 
             // const str = "abc:soha, bjsc:mzkjb";
-            const pairs = req.body.team.split(", ");
+            const teampairs = req.body.team.split(", ");
             const teamdata = {};
-            pairs.forEach(pair => {
+            teampairs.forEach(pair => {
                 const keyValue = pair.split(":");
                 teamdata[keyValue[0]] = keyValue[1];
             });
 
             console.log(teamdata);
+
+            const milestonepairs = req.body.milestone.split(", ");
+            const milestonedata = {};
+            milestonepairs.forEach(pairs => {
+                const keyValue = pairs.split(":");
+                milestonedata[keyValue[0]] = keyValue[1];
+            });
+
+            console.log(milestonedata);
 
             const user = await project.create({
                 user: req.user.id,
@@ -59,7 +68,7 @@ const JWT_SECRET = 'masknxanxlanla';
                 projectfundedby : req.body.projectfundedby,
                 projectstack : req.body.projectstack,
                 totalmilestones : req.body.totalmilestones,
-                milestone : req.body.milestone,
+                milestone : milestone,
                 deadlineofproject : req.body.deadlineofproject,
                 flowchart : req.body.flowchart,
                 architecture : req.body.architecture,

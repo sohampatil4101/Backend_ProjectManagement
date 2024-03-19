@@ -55,7 +55,7 @@ const ProjectSchema = new mongoose.Schema({
         required: true
       },
     milestone: {
-        type: [String], 
+        type: Object, 
         required: true
       },
     deadlineofproject: {
