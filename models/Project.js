@@ -64,11 +64,11 @@ const ProjectSchema = new mongoose.Schema({
       },
     flowchart: {
         type: String, 
-        required: true
+        required: false
       },
     architecture: {
         type: String, 
-        required: true
+        required: false
       },
     githubrepo: {
         type: String, 
