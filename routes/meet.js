@@ -62,7 +62,7 @@ const JWT_SECRET = 'masknxanxlanla';
     // get project data
     router.post('/getmeetdetails', fetchuser, async(req, res) =>{
         try {
-            const notes = await project.find({project: req.body.project});
+            const notes = await meet.find({project: req.body.project});
             res.json(notes)
         } catch (error) {
         console.log(error.message)
