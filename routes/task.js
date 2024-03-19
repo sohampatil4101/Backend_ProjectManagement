@@ -13,7 +13,7 @@ const JWT_SECRET = 'masknxanxlanla';
 
         try {
 
-            const user = await meet.create({
+            const user = await task.create({
                 user: req.user.id,
                 teammember: req.body.teammember,
                 project: req.body.project,
