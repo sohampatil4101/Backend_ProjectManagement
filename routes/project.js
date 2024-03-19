@@ -36,7 +36,7 @@ const JWT_SECRET = 'masknxanxlanla';
 
 
             // const str = "abc:soha, bjsc:mzkjb";
-            const teampairs = req.body.team.split(", ");
+            const teampairs = req.body.team.split(",");
             const teamdata = {};
             teampairs.forEach(pair => {
                 const keyValue = pair.split(":");
@@ -45,7 +45,7 @@ const JWT_SECRET = 'masknxanxlanla';
 
             // console.log(teamdata);
 
-            const milestonepairs = req.body.milestone.split(", ");
+            const milestonepairs = req.body.attendance.split(",");
             const milestonedata = {};
             milestonepairs.forEach(pairs => {
                 const keyValue = pairs.split(":");

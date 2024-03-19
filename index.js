@@ -42,6 +42,8 @@ app.get('/', (req, res) => {
 // Available routes
 app.use('/api/user', require('./routes/user'))
 app.use('/api/project', require('./routes/project.js'))
+app.use('/api/todo', require('./routes/todo.js'))
+app.use('/api/meet', require('./routes/meet.js'))
 
 // mental health
 // app.use('/api/todo', require('./routes/todo'))
