@@ -131,7 +131,7 @@ router.post('/login', [
                 skills : req.body.skills,
                 typeofuser : req.body.typeofuser,
                 bio : req.body.bio,
-                resume : req.file.path
+                resume : req.file
             })
             success = true
             res.json({success}) 
