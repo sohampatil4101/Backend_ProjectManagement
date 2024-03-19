@@ -1,7 +1,5 @@
 const express = require('express')
 const User = require('../models/User')
-const Updateuser = require('../models/user_medi_info/UserInfo')
-const Updateuserdeases = require('../models/user_medi_info/OldMedi_info')
 const userprofile = require('../models/Userprofile')
 const router = require('express').Router();
 const {body, validationResult} = require('express-validator')

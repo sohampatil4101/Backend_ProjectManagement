@@ -42,16 +42,9 @@ app.get('/', (req, res) => {
  
 // Available routes
 app.use('/api/user', require('./routes/user'))
-app.use('/api/doctor', require('./routes/doctor'))
-app.use('/api/chat', require('./routes/chat'))
-app.use('/api/blog', require('./routes/blog'))
 
 // mental health
-app.use('/api/todo', require('./routes/todo'))
-app.use('/api/note', require('./routes/note'))
-app.use('/api/sentiments', require('./routes/sentiments'))
-app.use('/api/assesment', require('./routes/assesment'))
-
+// app.use('/api/todo', require('./routes/todo'))
 app.listen(port, () => {
   console.log(`Backend app listening on port ${port}`)
 })
