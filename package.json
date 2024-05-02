@@ -15,7 +15,9 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
+    "google-scholar": "^1.5.1",
     "jsonwebtoken": "^9.0.2",
+    "limiter": "^2.1.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.1",
     "multer": "^1.4.5-lts.1"

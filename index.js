@@ -2,7 +2,14 @@ const connectToMongo = require('./db');
 const express = require('express')
 
 connectToMongo();
+// let scholar = require('google-scholar')
+// console.log("Soham is great")
 
+// scholar.all('chairmouse')
+//   .then(resultsObj => {
+//     console.log(resultsObj) // this will have all ~112 results
+//   })
+// console.log("Soham is great")
 
 const app = express()
 var cors = require('cors')
